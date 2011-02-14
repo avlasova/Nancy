@@ -41,9 +41,9 @@
             return new RazorTemplateEngine(host);
         }
 
-        public IView GetCompiledView<TModel>(TextReader reader) 
+        public IView GetCompiledView<TModel>(ViewLocationResult locationResult) 
         {
-            var razorResult = this.engine.GenerateCode(reader);
+            var razorResult = this.engine.GenerateCode(locationResult.Contents);
 
             string code;
 

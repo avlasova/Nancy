@@ -4,6 +4,6 @@ namespace Nancy.ViewEngines
 
     public interface IViewCompiler
     {
-        IView GetCompiledView<TModel>(TextReader textReader);
+        IView GetCompiledView<TModel>(ViewLocationResult locationResult);
     }
 }

@@ -14,7 +14,8 @@
             var compiler = new RazorViewCompiler();
 
             var reader = new StringReader(@"@{var x = ""test"";}<h1>Hello Mr. @x</h1>");
-            var view = compiler.GetCompiledView<object>(reader);
+            //var view = compiler.GetCompiledView<object>(reader);
+            var view = compiler.GetCompiledView<object>(new ViewLocationResult("?", reader));
             view.Writer = new StringWriter();
 
             // When

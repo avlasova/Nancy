@@ -12,10 +12,11 @@ namespace Nancy.ViewEngines.NDjango.Tests
         public void Execute()
         {
             // Given
-            var template = A.Fake<ITemplate>();
-            A.CallTo(() => template.Walk(null, null)).WithAnyArguments().Returns(new StringReader("view"));
+            var templateManager = A.Fake<ITemplateManager>();
+            A.CallTo(() => templateManager.RenderTemplate(null, null)).WithAnyArguments().Returns(new StringReader("view"));
+            //var view = new NDjangoView(template, null) { Writer = new StringWriter() };
 
-            var view = new NDjangoView(template, null) {Writer = new StringWriter()};
+            var view = new NDjangoView("test.django", templateManager) {Writer = new StringWriter()};
 
             // When
             view.Execute();

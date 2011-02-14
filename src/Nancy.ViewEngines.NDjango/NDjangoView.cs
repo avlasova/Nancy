@@ -6,12 +6,13 @@
 
     public class NDjangoView : IView
     {
-        private readonly ITemplate template;
+        //private readonly ITemplate template;
+        private readonly string viewPath;
         private readonly ITemplateManager templateManager;
 
-        public NDjangoView(ITemplate template, ITemplateManager templateManager)
+        public NDjangoView(string viewPath, ITemplateManager templateManager)
         {
-            this.template = template;
+            this.viewPath = viewPath;
             this.templateManager = templateManager;
         }
 
@@ -24,7 +25,8 @@
         public void Execute()
         {
             var context = new Dictionary<string, object> {{"Model", Model}};
-            var reader = template.Walk(templateManager, context);
+            //var reader = template.Walk(templateManager, context);
+            var reader = templateManager.RenderTemplate(viewPath, context);
 
             Writer.Write(reader.ReadToEnd());
         }

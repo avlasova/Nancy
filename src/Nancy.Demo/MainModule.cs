@@ -55,7 +55,7 @@ namespace Nancy.Demo
 
             Get["/ndjango"] = x => {
                 var model = new RatPack { FirstName = "Michael" };
-                return View.Django("~/views/ndjango.django", model);
+                return SmartView("~/views/ndjango.django", model);
             };
 
             Get["/spark"] = x => {
